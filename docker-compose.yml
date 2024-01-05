@@ -111,46 +111,34 @@ services:
     depends_on:
       - zookeeper
  # SPARK
-  spark-master:
-    container_name: spark-master
-    hostname: spark
-    image: bitnami/spark:3
-    user: root
+  spark:
+    image: docker.io/bitnami/spark:3.5
     environment:
-     - SPARK_MODE=master
-     - SPARK_MASTER=spark://spark-master:7077
-     - MASTER=spark://spark-master:7077
-     - SPARK_RPC_AUTHENTICATION_ENABLED=no
-     - SPARK_RPC_ENCRYPTION_ENABLED=no
-     - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
-     - SPARK_SSL_ENABLED=no
-     - SPARK_MASTER_HOST=spark-master
+      - SPARK_MODE=master
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+      - SPARK_SSL_ENABLED=no
+      - SPARK_USER=spark
     ports:
-     - '8080:8080'
+      - '8080:8080'
     networks:
      project3-network:
        ipv4_address: 172.25.0.9
     extra_hosts:
      - 'spark-master:0.0.0.0'
   spark-worker:
-    container_name: spark-worker
-    hostname: spark
-    image: bitnami/spark:3
-    user: root
-    depends_on:
-     - spark-master
+    image: docker.io/bitnami/spark:3.5
     environment:
-     - SPARK_MODE=worker
-     - SPARK_MASTER_URL=spark://spark-master:7077
-     - SPARK_MASTER=spark://spark-master:7077
-     - SPARK_MASTER_HOST=spark-master
-     - MASTER=spark://spark-master:7077
-     - SPARK_WORKER_MEMORY=4G
-     - SPARK_WORKER_CORES=2
-     - SPARK_RPC_AUTHENTICATION_ENABLED=no
-     - SPARK_RPC_ENCRYPTION_ENABLED=no
-     - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
-     - SPARK_SSL_ENABLED=no
+      - SPARK_MODE=worker
+      - SPARK_MASTER_URL=spark://spark:7077
+      - SPARK_WORKER_MEMORY=1G
+      - SPARK_WORKER_CORES=1
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+      - SPARK_SSL_ENABLED=no
+      - SPARK_USER=spark
     ports:
      - '8081:8081'
     networks:
