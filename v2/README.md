@@ -1,6 +1,4 @@
-[![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/big-data-europe/Lobby)
-
-# docker-hbase
+# bigdata-tool-docker
 
 # Standalone
 To run standalone hbase:
@@ -13,10 +11,10 @@ Can be used for testing/development, connected to Hadoop cluster.
 # Local distributed
 To run local distributed hbase:
 ```
-docker-compose -f docker-compose-distributed-local.yml up -d
+docker-compose up -d
 ```
 
-This deployment will start Zookeeper, HMaster and HRegionserver in separate containers.
+This deployment will start Hadoop, Spark, Kafka, Zookeeper, HMaster and HRegionserver in separate containers.
 
 # Distributed
 To run distributed hbase on docker swarm see this [doc](./distributed/README.md):
