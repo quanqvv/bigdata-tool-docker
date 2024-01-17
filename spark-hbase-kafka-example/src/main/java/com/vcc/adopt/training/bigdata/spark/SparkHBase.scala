@@ -42,7 +42,7 @@ object SparkHBase {
       .repartition(5)  // chia dataframe thành 5 phân vùng, mỗi phân vùng sẽ được chạy trên một worker (nếu không chia mặc định là 200)
 
     val batchPutSize = 100
-    df.foreachPartition(rows => {
+    df.foreachPartition((rows: Iterator[Row]) => {
         val hbaseConnection = HBaseConnectionFactory.createConnection()
         try{
           val table = hbaseConnection.getTable(TableName.valueOf("person", "person_info"))
