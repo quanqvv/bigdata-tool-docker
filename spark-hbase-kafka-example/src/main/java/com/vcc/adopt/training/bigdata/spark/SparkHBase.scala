@@ -63,6 +63,9 @@ object SparkHBase {
               puts.clear()
             }
           }
+          if (puts.size() > 0){
+            table.put(puts)
+          }
         }finally {
           hbaseConnection.close()
         }
