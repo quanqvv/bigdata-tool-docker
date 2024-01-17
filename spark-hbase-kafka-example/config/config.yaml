@@ -1,2 +1,0 @@
-
-personInfoLogPath: hdfs://namenode:9000/data/person-info.parquet
