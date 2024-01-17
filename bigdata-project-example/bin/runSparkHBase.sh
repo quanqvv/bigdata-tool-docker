@@ -1,3 +1,5 @@
+git pull
+mvn package
 spark-submit \
   --master yarn \
   --deploy-mode client \
@@ -10,5 +12,5 @@ spark-submit \
   --conf spark.port.maxRetries=40 \
   --conf spark.sql.parquet.binaryAsString=true \
   --class com.vcc.adopt.training.bigdata.spark.SparkHBase \
-   target/spark-hbase-example-1.0-SNAPSHOT.jar
+   target/bigdata-project-example-1.0-SNAPSHOT.jar
 
