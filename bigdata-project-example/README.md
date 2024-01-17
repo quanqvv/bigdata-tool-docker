@@ -30,8 +30,8 @@ df.count()
 ```
 
 
-### install git cho spark container
-vào spark-container-master để cài git và các lệnh khác (do container này dùng os debian nên hơi khác container khác dùng ubuntu) 
+### install git on spark container
+vào spark-container-master để cài git và các lệnh khác (do container này dùng os debian nên hơi khác container dùng ubuntu) 
 
 ```console
 # vào user root của spark-container-master
