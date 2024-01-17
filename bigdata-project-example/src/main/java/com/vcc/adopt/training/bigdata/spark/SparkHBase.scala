@@ -12,7 +12,18 @@ import java.util
 
 
 object SparkHBase {
+  /** How to run
+   * docker exec -u root -it spark-master-container /bin/bash
+   * cd bigdata-tool-example/bigdata-project-example
+   * mvn package
+   *
+   * docker exec -it spark-master-container /bin/bash
+   * cd bigdata-tool-example/bigdata-project-example
+   * bash bin/runSparkHbase.sh
+   */
+
   val spark: SparkSession = SparkSession.builder().getOrCreate()
+  spark.sparkContext.setLogLevel("WARN")
   private val personInfoLogPath = ConfigPropertiesLoader.getYamlConfig.getProperty("personInfoLogPath")
 
   private def createDataFrameAndPutToHDFS(): Unit = {
