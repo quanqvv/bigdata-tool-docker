@@ -39,5 +39,6 @@ vào spark-container-master để cài git và các lệnh khác (do container n
 docker exec -u root -it spark-master-container /bin/bash  
 apt update
 apt install git
+apt install maven
 ```
 
