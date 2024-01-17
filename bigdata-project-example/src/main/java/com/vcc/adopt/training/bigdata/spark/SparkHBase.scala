@@ -12,15 +12,6 @@ import java.util
 
 
 object SparkHBase {
-  /** How to run
-   * docker exec -u root -it spark-master-container /bin/bash
-   * cd bigdata-tool-example/bigdata-project-example
-   * mvn package
-   *
-   * docker exec -it spark-master-container /bin/bash
-   * cd bigdata-tool-example/bigdata-project-example
-   * bash bin/runSparkHbase.sh
-   */
 
   val spark: SparkSession = SparkSession.builder().getOrCreate()
   spark.sparkContext.setLogLevel("WARN")
@@ -54,6 +45,7 @@ object SparkHBase {
 
     val batchPutSize = 100
     df.foreachPartition((rows: Iterator[Row]) => {
+        // tạo connection hbase buộc phải tạo bên trong mỗi partition (không được tạo bên ngoài). Tối ưu hơn sẽ dùng connectionPool để reuse lại connection trên các worker
         val hbaseConnection = HBaseConnectionFactory.createConnection()
         try{
           val table = hbaseConnection.getTable(TableName.valueOf("person", "person_info"))
