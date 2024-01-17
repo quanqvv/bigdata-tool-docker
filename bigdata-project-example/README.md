@@ -1,9 +1,8 @@
 
-# Setup bigdata tool:
+# install bigdata tool:
 
 ### setup
 ```console
-install bigdata tool
 git clone https://github.com/quanqvv/bigdata-tool-docker
 cd bigdata-tool-docker
 docker-compose up -d
@@ -50,6 +49,11 @@ create 'emp', 'personal data', 'professional data'
 put 'emp','1','personal data:name','raju'
 ```
 
+### Common Link
+1. Link cụm HBase: http://localhost:16010/master-status
+2. Link job Spark: http://localhost:8080/
+3. Link Yarn: http://localhost:8088/cluster
+4. Link HDFS: http://localhost:50070/explorer.html#/
 
 # How to run bigdata-project-example
 
