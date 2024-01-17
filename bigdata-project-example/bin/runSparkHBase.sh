@@ -1,7 +1,5 @@
-git pull
-mvn package
 spark-submit \
-  --master yarn \
+  --master local[*] \
   --deploy-mode client \
   --driver-memory 2G \
   --executor-memory 2G \

@@ -17,9 +17,9 @@ object SparkHBase {
 
   private def createDataFrameAndPutToHDFS(): Unit = {
     val data = Seq(
-      Row(1, "Alice", 25),
-      Row(2, "Bob", 30),
-      Row(3, "Charlie", 22)
+      Row(1L, "Alice", 25),
+      Row(2L, "Bob", 30),
+      Row(3L, "Charlie", 22)
     )
 
     val schema = StructType(Seq(
