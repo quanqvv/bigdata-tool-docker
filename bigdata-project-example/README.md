@@ -73,5 +73,5 @@ mvn package
 # vào user noname của spark-container-master
 docker exec -it spark-master-container /bin/bash
 cd bigdata-tool-example/bigdata-project-example
-bash bin/runSparkHbase.sh
+bash bin/runSparkHBase.sh
 ```
