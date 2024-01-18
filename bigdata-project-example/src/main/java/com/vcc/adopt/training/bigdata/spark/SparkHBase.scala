@@ -111,7 +111,7 @@ object SparkHBase {
           rows.map(row => {
             val get = new Get(Bytes.toBytes(row.getAs[Long]("personId")))
               get.addColumn(Bytes.toBytes("cf"), Bytes.toBytes("age"))  // mặc định sẽ lấy ra tất cả các cột, dùng lệnh này giúp chỉ lấy cột age
-              (row.getAs[Long]("personId"), table.get(get).getValue(Bytes.toBytes("cf"), Bytes.toBytes("age")))
+              (row.getAs[Long]("personId"), Bytes.toInt(table.get(get).getValue(Bytes.toBytes("cf"), Bytes.toBytes("age"))))
           })
         }finally {
 //          hbaseConnection.close()
