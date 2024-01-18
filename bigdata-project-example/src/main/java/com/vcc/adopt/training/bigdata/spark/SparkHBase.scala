@@ -84,7 +84,7 @@ object SparkHBase {
           table.put(puts)
         }
       } finally {
-//        hbaseConnection.close()
+        hbaseConnection.close()
       }
     })
   }
@@ -114,7 +114,7 @@ object SparkHBase {
               (row.getAs[Long]("personId"), table.get(get).getValue(Bytes.toBytes("cf"), Bytes.toBytes("age")))
           })
         }finally {
-          hbaseConnection.close()
+//          hbaseConnection.close()
         }
       }).toDF("personId", "age")
 
