@@ -1,5 +1,5 @@
 
-# install bigdata tool:
+# Install bigdata tool
 
 ### setup
 ```console
