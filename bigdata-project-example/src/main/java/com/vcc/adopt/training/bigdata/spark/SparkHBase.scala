@@ -27,7 +27,8 @@ object SparkHBase {
     val data = Seq(
       Row(1L, "Alice", 25),
       Row(2L, "Bob", 30),
-      Row(3L, "Charlie", 22)
+      Row(3L, "Charlie", 22),
+      Row(4L, "Yorn", 22)
     )
 
     val schema = StructType(Seq(
