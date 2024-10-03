@@ -18,7 +18,7 @@ hadoop fs -put test.csv /
 ### test spark job: read above csv file
 ```console
 docker exec -it bigdata-tool-docker_spark_1 /bin/bash
-spark-shell --master spark://spark:7077
+spark-shell --master spark://spark:7077 --conf spark.jars.ivy=/tmp/.ivy
 ```
 
 
