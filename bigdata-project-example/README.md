@@ -17,13 +17,14 @@ hadoop fs -put test.csv /
 
 ### test spark job: read above csv file
 ```console
-docker exec -it bigdata-tool-docker_spark_1 /bin/bash
-spark-shell --master spark://spark:7077 --conf spark.jars.ivy=/tmp/.ivy
+docker exec -it spark-container-master /bin/bash (không phải 'docker exec -u root -it spark-master-container /bin/bash', vì sẽ vào user root)
+spark-shell --master spark://spark:7077
 ```
 
 
 ### spark-shell example
 ```scala
+docker exec -it spark-container-master /bin/bash (không phải 'docker exec -u root -it spark-master-container /bin/bash', vì sẽ vào user root)
 val df = spark.read.option("header", "true").csv("hdfs://namenode:9000/test.csv")
 df.show()
 df.count()
@@ -31,7 +32,7 @@ df.count()
 
 
 ### install git on spark container
-vào spark-container-master để cài git và các lệnh khác (do container này dùng os debian nên hơi khác container dùng ubuntu) 
+vào spark-container-master để cài git và các lệnh khác, buộc phải vào user root (do container này dùng os debian nên hơi khác container dùng ubuntu)
 
 ```console
 # vào user root của spark-container-master
@@ -47,6 +48,13 @@ docker exec -it hbase-master /bin/bash
 hbase shell
 create 'emp', 'personal data', 'professional data'
 put 'emp','1','personal data:name','raju'
+```
+
+### test mysql
+user: root, password: example
+```console
+docker exec -it mysql bash
+mysql -h mysql -u root -p
 ```
 
 ### Common Link

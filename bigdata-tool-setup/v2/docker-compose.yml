@@ -143,6 +143,15 @@ services:
     depends_on:
       - zoo
 
+  mysql:
+    image: mysql
+    restart: always
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+    ports:
+      - '3306:3306'
+
 volumes:
   hadoop_namenode:
   hadoop_datanode:
